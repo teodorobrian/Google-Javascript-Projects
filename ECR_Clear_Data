@@ -1,0 +1,40 @@
+//Function to clear data
+
+//Terminations
+
+function ClearDataTerminations() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var Emp_Name = sheet.getRange("A3:A").clearContent();
+  var Email_Address = sheet.getRange("B3:B").clearContent();
+  var Action_Date = sheet.getRange("C3:C").clearContent();
+  var Old_Loc_Num = sheet.getRange("D3:D").clearContent();
+  var Old_Loc_Name = sheet.getRange("E3:E").clearContent();
+  var Old_Dept_Num = sheet.getRange("F3:F").clearContent();
+  var Old_Dept_Name = sheet.getRange("G3:G").clearContent();
+  var Old_Job_Desc = sheet.getRange("H3:H").clearContent();
+  var Old_Manager_Name = sheet.getRange("I3:I").clearContent();
+  var Old_Org_Desc = sheet.getRange("J3:J").clearContent();
+}
+
+//Transfers
+
+function ClearDataTransfers() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var Emp_Name = sheet.getRange("A3:A").clearContent();
+  var Email_Address = sheet.getRange("B3:B").clearContent();
+  var Action_Date = sheet.getRange("C3:C").clearContent();
+  var Old_Loc_Num = sheet.getRange("D3:D").clearContent();
+  var Old_Loc_Name = sheet.getRange("E3:E").clearContent();
+  var New_Loc_Num = sheet.getRange("F3:F").clearContent();
+  var New_Loc_Name = sheet.getRange("G3:G").clearContent();
+  var Old_Dept_Num = sheet.getRange("H3:H").clearContent();
+  var Old_Dept_Name = sheet.getRange("I3:I").clearContent();
+  var New_Dept_Num = sheet.getRange("J3:J").clearContent();
+  var New_Dept_Name = sheet.getRange("K3:K").clearContent();
+  var Old_Job_Desc = sheet.getRange("L3:L").clearContent();
+  var New_Job_Desc = sheet.getRange("M3:M").clearContent();
+  var Old_Manager_Name = sheet.getRange("N3:N").clearContent();
+  var New_Manager_Name = sheet.getRange("O3:O").clearContent();
+  var Old_Org_Desc = sheet.getRange("P3:P").clearContent();
+  var New_Org_Desc = sheet.getRange("Q3:Q").clearContent();
+}
