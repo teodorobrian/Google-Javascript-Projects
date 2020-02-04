@@ -1,0 +1,95 @@
+// Script button below
+function onOpen() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var menuEntries = [ {name: "Check Terminations", functionName: "Terminations"},
+  {name: "Check Transfers/OTHER", functionName:"Transfers"},
+  {name: "Clear Terminations", functionName: "ClearDataTerminations"},
+  {name: "Clear Transfers/OTHER", functionName: "ClearDataTransfers"}];
+  ss.addMenu("ECR Tool Menu", menuEntries);
+}
+
+//Script for TERMINATIONS
+
+function Terminations() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('Data_TERMINATIONS'); //source sheet
+  var testrange = sheet.getRange('F:F'); //range to check
+  var testvalue = (testrange.getValues());
+  var csh = ss.getSheetByName('Employees_To_Remove_TERMINATIONS'); //destination sheet
+  var data = [];
+  var j =[];
+
+  //Condition check in F:F; If true copy the same row to data array
+for (i=0; i<testvalue.length;i++) {
+  if (testvalue[i] == '254'  || 
+      testvalue[i] == '560'  || 
+      testvalue[i] == '164'  || 
+      testvalue[i] == '260'  ||
+      testvalue[i] == '146'  ||
+      testvalue[i] == '91'   ||
+      testvalue[i] == '847'  ||
+      testvalue[i] == '167'  ||
+      testvalue[i] == '283'  ||
+      testvalue[i] == '284'  ||
+      testvalue[i] == '1180' ||
+      testvalue[i] == '1242' ||
+      testvalue[i] == '806'  ||
+      testvalue[i] == '489'  ||
+      testvalue[i] == '490'  ||
+      testvalue[i] == '807'  ||
+      testvalue[i] == '99'   ||
+      testvalue[i] == 'End Of Report') { //NOTE HERE: || is the OR equivalent for the conditional statement. AND is &&
+    
+      data.push.apply(data,sheet.getRange(i+1,1,1,25).getValues());
+  //Copy matched ROW numbers to j
+      j.push(i);
+ }
+ }
+if(data.length > 0){
+//Copy data array to destination sheet
+  csh.getRange(csh.getLastRow()+1,1,data.length,data[0].length).setValues(data);
+}            
+}
+
+//Script for TRANSFERS 
+
+function Transfers() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('Data_TRANSFERS/OTHER'); //source sheet
+  var testrange = sheet.getRange('H:H'); //range to check
+  var testvalue = (testrange.getValues());
+  var csh = ss.getSheetByName('Employees_To_Remove_TRANSFERS/OTHER'); //destination sheet
+  var data = [];
+  var j =[];
+
+  //Condition check in H:H; If true copy the same row to data array
+for (i=0; i<testvalue.length;i++) {
+  if (testvalue[i] == '254'  || 
+      testvalue[i] == '560'  || 
+      testvalue[i] == '164'  || 
+      testvalue[i] == '260'  ||
+      testvalue[i] == '146'  ||
+      testvalue[i] == '91'   ||
+      testvalue[i] == '847'  ||
+      testvalue[i] == '167'  ||
+      testvalue[i] == '283'  ||
+      testvalue[i] == '284'  ||
+      testvalue[i] == '1180' ||
+      testvalue[i] == '1242' ||
+      testvalue[i] == '806'  ||
+      testvalue[i] == '489'  ||
+      testvalue[i] == '490'  ||
+      testvalue[i] == '807'  ||
+      testvalue[i] == '99'   ||
+      testvalue[i] == 'End Of Report') { //NOTE HERE: || is the OR equivalent for the conditional statement. AND is &&
+    
+      data.push.apply(data,sheet.getRange(i+1,1,1,25).getValues());
+  //Copy matched ROW numbers to j
+      j.push(i);
+ }
+ }
+if(data.length > 0){
+//Copy data array to destination sheet
+  csh.getRange(csh.getLastRow()+1,1,data.length,data[0].length).setValues(data);
+}            
+}
